@@ -1,5 +1,5 @@
 <!--NAVIGATION-->
-<nav class="navbar navbar-expand-lg navbar-primary bg-primary sticky-top">
+<nav class="navbar navbar-expand-lg navbar-primary bg-dark sticky-top">
     <div class="container">
         <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -26,76 +26,34 @@
 
 
 <!--CAROUSEL-->
-<div class="container-fluid " >
-  <div class="row">
-    <div class="col-sm-12">
+<div class="container-fluid">
+  <div class="row ">
+    <div class="col-sm-12 ">
       <div id="inam" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
-
-            <div class="carousel-item active">
+            <?php //Llenar el carousel con portadas de las imagenes que sean estreno
+            $count = 0;
+            foreach ($peliculas as $pelicula) {
+              if($pelicula -> prioridad == "ESTRENO"){                  
+            ?>
+            <!-- START CAROUSEL ITEMS-->
+            <div class="<?php if($count==0){echo 'carousel-item active';}else{echo 'carousel-item';};?>   ">
                <div class="container">
-                  <div class="row"> 
-
+                  <div class="row  justify-content-center"> 
                       <div class="col-sm-12 col-lg-3"><!--ITEM-->
                         <div class="card" style="width: 250px;margin:10px;">
-                          <img src="img/aladdin.jfif" class="card-img-top">
+                          <img src="<?php echo $pelicula->imagen;?>" class="card-img-top">
                         </div> 
                       </div> <!--END ITEM--> 
-
-                      <div class="col-sm-12 col-lg-3"><!--ITEM-->
-                        <div class="card" style="width: 250px;margin:10px;">
-                          <img src="img/aladdin.jfif" class="card-img-top">
-                        </div> 
-                      </div> <!--END ITEM--> 
-
-                      <div class="col-sm-12 col-lg-3"><!--ITEM-->
-                        <div class="card" style="width: 250px;margin:10px;">
-                          <img src="img/aladdin.jfif" class="card-img-top">
-                        </div> 
-                      </div> <!--END ITEM--> 
-
-                      <div class="col-sm-12 col-lg-3"><!--ITEM-->
-                        <div class="card" style="width: 250px;margin:10px;">
-                          <img src="img/aladdin.jfif" class="card-img-top">
-                        </div> 
-                      </div> <!--END ITEM--> 
-                      
                   </div> <!--ROW--> 
                  </div> <!--CONTAINER--> 
-            </div> <!--CAROUSEL ITEM-->
-    
-          <!--START CAROUSEL ITEM-->
-          <div class="carousel-item">
-              <div class="container">
-                <div class="row">
+            </div> <!-- END CAROUSEL ITEMS-->
+            <?php 
+             $count = 1; 
+              }//End if
+            }//End for             
+            //Fin del llenado de carousel ?>
 
-                  <div class="col-sm-12 col-lg-3"><!--ITEM-->
-                    <div class="card" style="width: 250px;margin:10px;">
-                      <img src="img/aladdin.jfif" class="card-img-top">
-                    </div> 
-                  </div> <!--END ITEM--> 
-
-                  <div class="col-sm-12 col-lg-3"><!--ITEM-->
-                    <div class="card" style="width: 250px;margin:10px;">
-                      <img src="img/aladdin.jfif" class="card-img-top">                       
-                    </div>
-                  </div> <!--END ITEM--> 
-
-                  <div class="col-sm-12 col-lg-3"><!--ITEM-->
-                    <div class="card" style="width: 250px;margin:10px;">
-                      <img src="img/aladdin.jfif" class="card-img-top">                       
-                    </div>                  
-                  </div> <!--END ITEM--> 
-
-                  <div class="col-sm-12 col-lg-3"><!--ITEM-->
-                    <div class="card" style="width: 250px;margin:10px;">
-                      <img src="img/aladdin.jfif" class="card-img-top">                      
-                    </div> 
-                   </div> <!--END ITEM--> 
-
-              </div> <!--ROW--> 
-          </div> <!--CONTAINER--> 
-        </div> <!--END CAROUSEL ITEM-->
 
           <a href="#inam" class="carousel-control-prev " href="#carouselExampleControls" role="button" data-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>

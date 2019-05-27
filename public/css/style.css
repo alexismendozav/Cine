@@ -8,3 +8,8 @@
   width: 780px;    
   margin: 0 auto;
 }
+.container-fluid
+{
+  background-color:#343A40;
+}
+

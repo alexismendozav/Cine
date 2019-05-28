@@ -1,0 +1,111 @@
+<!--NAVIGATION-->
+<?php $id = $_REQUEST["id"];?>
+
+<nav class="navbar navbar-expand-lg navbar-primary bg-primary sticky-top">
+    <div class="container">
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link font-weight-bold text-light" href="client">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link font-weight-bold text-light" href="cartelera">Ver cartelera</a>
+                </li>
+            </ul>
+            <a class="navbar-brand hidden-md-down text-light " href="#">
+                <img src="img/logo.png" alt="" width="30px" ></a>
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold text-light" href="#">Proximos estrenos</a>
+                </li>
+            </ul>
+          </div>
+    </div>
+</nav> <!--END NAVIGATION-->
+<!--Movie Details-->
+<?php  foreach ($peliculas as $pelicula) { 
+  if($pelicula -> id_pelicula == $id){?>
+<div class="container-fluid bg-light ">
+  <div class="row ">
+    <div class="col-sm-12">
+      <div id="inam" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <!-- START CAROUSEL ITEMS-->
+                  <div class="carousel-item active">
+                    <div class="container">
+                        <div class="row  justify-content-center"> 
+                            <div class="col-sm-16 col-lg-3"><!--ITEM-->
+                              <div class="card" style="width: 250px;height=360px;margin:10px;">
+                                <img src="<?php echo $pelicula -> imagen;?>" class="card-img-top">
+                              </div> 
+                         </div> <!--END ITEM--> 
+
+                        <div class="col-sm-16 col-lg-3"><!--ITEM-->
+                          <div class="card-body" style="width: 250px;margin:10px;">
+                          <h1 class="text-primary" ><?php echo $pelicula -> nombre_pelicula;?></h1>
+                          <!--Se compara el id de la clasificacion con el de la pelicula y se muestra el nombre de la clasificacion-->
+                          <h4 class="text-success">
+                            <?php 
+                              $id_clasificacion = $pelicula -> clasificacion;
+                              foreach ($clasificaciones as $clasificacion){
+                                if($clasificacion -> id_clasificacion == $id_clasificacion){
+                                  echo $clasificacion -> clasificacion;
+                                }
+                              }
+                            ?>
+                          </h4>
+                          
+                          <h4 class="text-danger"><?php echo $pelicula -> duracion;?></h4>
+                  
+                          <!--Se compara el id de la categoria con el de la pelicula y se muestra el nombre de la categoria-->
+                          <h4 class="text-warning">
+                            <?php 
+                            $id_categoria = $pelicula -> categoria;
+                            foreach ($categorias as $categoria){
+                              if($categoria -> id_categoria == $id_categoria){
+                                echo $categoria -> categoria;
+                              }
+                            }
+                            ?>
+                          </h4>
+
+                        </div> 
+                      </div> <!--END ITEM--> 
+                  </div> <!--ROW--> 
+                </div> <!--CONTAINER--> 
+            </div> <!-- END CAROUSEL ITEMS-->                     
+         </div> <!--CAROUSEL INNER-->
+      </div> <!--INAM-->
+    </div> <!--COL SM 12-->
+  </div> <!--ROW 1-->
+  <br>
+</div>
+
+<!--End Movie Details-->
+<div class="container-fluid bg-light  text-dark">
+    <center>
+      <h2 >Trailer</h2>
+        <div>
+        <iframe  width="720" height="350" src="<?php echo $pelicula -> triler;?>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        
+        </div>
+    </center>
+    <br>
+</div>
+
+<div class="container-fluid bg-light   text-dark">
+
+     <div class="container-c">
+     <br>
+      <h2 >Sinopsis</h2>
+      <br>
+        <div>
+          <h6><?php echo $pelicula -> descripcion;?></h6>
+        </div>
+     </div>
+     <br>
+</div>
+ <?php } } ?>

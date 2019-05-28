@@ -1,0 +1,68 @@
+<!--NAVIGATION-->
+<nav class="navbar navbar-expand-lg navbar-primary bg-primary sticky-top">
+    <div class="container">
+        <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link font-weight-bold text-light" href="client">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link font-weight-bold text-light" href="#">Ver cartelera</a>
+                </li>
+            </ul>
+            <a class="navbar-brand hidden-md-down text-light " href="#">
+                <img src="img/logo.png" alt="" width="30px" ></a>
+            <ul class="navbar-nav ml-auto">
+                <form class="form-inline my-2 my-lg-0">
+                <input class="form-control" id="date" type="date" value="<?php echo date('d-m-Y');?>" min="<?php echo date('d-m-Y');?>" max="<?php echo date('d-m-Y',strtotime(date('d-m-Y').'+ 15 days'));?>">
+                    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </ul>
+          </div>
+    </div>
+</nav> <!--END NAVIGATION-->
+<br>
+<!--Movies-->
+<div class="container-c">
+    <?php    foreach ($peliculas as $pelicula) {?>
+    <div class="card flex-row flex-wrap">
+        <div class="card-header border-0">
+            <img src="<?php echo $pelicula->imagen; ?>"  style="width: 130px;height=360px;" alt="">
+        </div>
+        <div class="card-block px-2">
+            <h4 class="card-title"><?php echo $pelicula->nombre_pelicula; ?></h4>
+            <p class="card-text"><?php echo $pelicula->duracion; ?></p>
+
+            <p class="card-text">
+            <?php 
+              $id_clasificacion = $pelicula -> clasificacion;
+               foreach ($clasificaciones as $clasificacion){
+                  if($clasificacion -> id_clasificacion == $id_clasificacion){
+                      echo $clasificacion -> clasificacion;
+                   }
+              }?>
+            </p>
+
+            <p class="card-text"><?php echo $pelicula->idioma; ?></p>
+
+            <a href="#" class="btn btn-primary align-self-end">Ver trailer</a>
+        </div>
+
+        <!--Inicio de las funciones-->
+        <div class="card-block px-2 ml-auto ">
+            <h4 class="card-title"><?php echo 'Horario' ?></h4>
+        </div>
+         <!--Inicio de las funciones-->
+        
+        <div class="w-100"></div>
+        <div class="card-footer w-100 text-muted">
+            Footer stating cats are CUTE little animals
+        </div>
+    </div>
+    <br>
+    <?php } ?>
+</div>
+<!--End Movies-->

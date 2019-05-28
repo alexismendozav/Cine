@@ -17,9 +17,9 @@
                 <img src="img/logo.png" alt="" width="30px" ></a>
             <ul class="navbar-nav ml-auto">
                 <form class="form-inline my-2 my-lg-0">
-                <input class="form-control" id="date" type="date" value="<?php echo date('d-m-Y');?>" min="<?php echo date('d-m-Y');?>" max="<?php echo date('d-m-Y',strtotime(date('d-m-Y').'+ 15 days'));?>">
-                    <button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
+                <input class="form-control" id="date" type="date" value="<?php echo date('Y-m-d');?>" min="<?php echo date('Y-m-d');?>" max="<?php echo date(('Y-m-d'),strtotime(date('Y-m-d').'+ 15 days'));?>">
+                <a class="btn btn-success my-2 my-sm-0" href="cartelera" role="button">Buscar</a>
+                <form>
             </ul>
           </div>
     </div>
@@ -66,3 +66,8 @@
     <?php } ?>
 </div>
 <!--End Movies-->
+<script>
+    jQuery(document).ready(function($){
+       
+    });
+</script>

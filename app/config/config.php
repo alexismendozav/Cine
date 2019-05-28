@@ -12,7 +12,7 @@ return new \Phalcon\Config([
         'host'        => 'localhost',
         'username'    => 'root',
         'password'    => '',
-        'dbname'      => 'cine',
+        'dbname'      => 'cine2',
         'charset'     => 'utf8',
     ],
     'application' => [

@@ -1,5 +1,6 @@
 <?php
 
+
 class Categorias extends \Phalcon\Mvc\Model
 {
 
@@ -16,11 +17,17 @@ class Categorias extends \Phalcon\Mvc\Model
     public $categoria;
 
     /**
+     *
+     * @var string
+     */
+    public $visible;
+
+    /**
      * Initialize method for model.
      */
     public function initialize()
     {
-        $this->setSchema("cine");
+        $this->setSchema("cine2");
         $this->setSource("categorias");
         $this->hasMany('id_categoria', 'Peliculas', 'categoria', ['alias' => 'Peliculas']);
     }

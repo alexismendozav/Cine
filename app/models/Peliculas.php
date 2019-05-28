@@ -1,6 +1,5 @@
 <?php
 
-
 class Peliculas extends \Phalcon\Mvc\Model
 {
 
@@ -81,7 +80,7 @@ class Peliculas extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("cine");
+        $this->setSchema("cine2");
         $this->setSource("peliculas");
         $this->hasMany('id_pelicula', 'Proyecciones', 'pelicula', ['alias' => 'Proyecciones']);
         $this->belongsTo('categoria', 'Categorias', 'id_categoria', ['alias' => 'Categorias']);

@@ -21,7 +21,7 @@ class Salas extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("cine");
+        $this->setSchema("cine2");
         $this->setSource("salas");
         $this->hasMany('id_sala', 'Proyecciones', 'sala', ['alias' => 'Proyecciones']);
     }

@@ -21,7 +21,7 @@ class Clasificaciones extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("cine");
+        $this->setSchema("cine2");
         $this->setSource("clasificaciones");
         $this->hasMany('id_clasificacion', 'Peliculas', 'clasificacion', ['alias' => 'Peliculas']);
     }

@@ -24,13 +24,13 @@ class Proyecciones extends \Phalcon\Mvc\Model
 
     /**
      *
-     * @var integer
+     * @var string
      */
     public $dia;
 
     /**
      *
-     * @var integer
+     * @var string
      */
     public $horario;
 
@@ -39,10 +39,8 @@ class Proyecciones extends \Phalcon\Mvc\Model
      */
     public function initialize()
     {
-        $this->setSchema("cine");
+        $this->setSchema("cine2");
         $this->setSource("proyecciones");
-        $this->belongsTo('dia', 'Dias', 'id_dia', ['alias' => 'Dias']);
-        $this->belongsTo('horario', 'Horarios', 'id_horario', ['alias' => 'Horarios']);
         $this->belongsTo('pelicula', 'Peliculas', 'id_pelicula', ['alias' => 'Peliculas']);
         $this->belongsTo('sala', 'Salas', 'id_sala', ['alias' => 'Salas']);
     }

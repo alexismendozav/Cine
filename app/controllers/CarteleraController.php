@@ -11,6 +11,10 @@ class CarteleraController extends \Phalcon\Mvc\Controller
         $clasificaciones= Clasificaciones::find();
         $this->view->clasificaciones = $clasificaciones;
 
+        $proyecciones= Proyecciones::find();
+        $this->view->proyecciones = $proyecciones;
+
+        
         
     }
 

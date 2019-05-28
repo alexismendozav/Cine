@@ -1,4 +1,5 @@
 <!--NAVIGATION-->
+<?php $dias=""; $horario=""; $date =$_REQUEST["date"];?>
 <nav class="navbar navbar-expand-lg navbar-primary bg-primary sticky-top">
     <div class="container">
         <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,37 +26,37 @@
     </div>
 </nav> <!--END NAVIGATION-->
 <br>
-<!--Movies-->
+<!--Movies
 <div class="container-c">
-    <?php    foreach ($peliculas as $pelicula) {?>
+    <?php   // foreach ($peliculas as $pelicula) {?>
     <div class="card flex-row flex-wrap">
         <div class="card-header border-0">
-            <img src="<?php echo $pelicula->imagen; ?>"  style="width: 130px;height=360px;" alt="">
+            <img src="<?php// echo $pelicula->imagen; ?>"  style="width: 130px;height=360px;" alt="">
         </div>
         <div class="card-block px-2">
-            <h4 class="card-title"><?php echo $pelicula->nombre_pelicula; ?></h4>
-            <p class="card-text"><?php echo $pelicula->duracion; ?></p>
+            <h4 class="card-title"><?php //echo $pelicula->nombre_pelicula; ?></h4>
+            <p class="card-text"><?php// echo $pelicula->duracion; ?></p>
 
             <p class="card-text">
             <?php 
-              $id_clasificacion = $pelicula -> clasificacion;
+            /*  $id_clasificacion = $pelicula -> clasificacion;
                foreach ($clasificaciones as $clasificacion){
                   if($clasificacion -> id_clasificacion == $id_clasificacion){
-                      echo $clasificacion -> clasificacion;
-                   }
-              }?>
+                      echo $clasificacion -> clasificacion; }
+                   }*/
+              ?>
             </p>
 
-            <p class="card-text"><?php echo $pelicula->idioma; ?></p>
+            <p class="card-text"><?php //echo $pelicula->idioma; ?></p>
 
             <a href="#" class="btn btn-primary align-self-end">Ver trailer</a>
         </div>
 
-        <!--Inicio de las funciones-->
+        Inicio de las funciones
         <div class="card-block px-2 ml-auto ">
-            <h4 class="card-title"><?php echo 'Horario' ?></h4>
+            <h4 class="card-title"><?php// echo 'Horario' ?></h4>
         </div>
-         <!--Inicio de las funciones-->
+         Inicio de las funciones
         
         <div class="w-100"></div>
         <div class="card-footer w-100 text-muted">
@@ -63,11 +64,62 @@
         </div>
     </div>
     <br>
-    <?php } ?>
+    <?php //} ?>
 </div>
-<!--End Movies-->
+End Movies-->
+<div class="container-c">
+    <?php $fecha=""; $aux=0;  foreach ($proyecciones as $proyeccion) {
+     $fecha = "".$proyeccion ->dia  ;
+     if($date==$fecha){
+     if($aux != $proyeccion->pelicula){    
+    ?>
+    
+    <div class="card flex-row flex-wrap">
+        <div class="card-header border-0">
+            <img src="<?php echo $proyeccion->pelicula; ?>"  style="width: 130px;height=360px;" alt="">
+        </div>
+        <div class="card-block px-2">
+            <h4 class="card-title"><?php echo $proyeccion->pelicula; ?></h4>
+            <p class="card-text"><?php echo $proyeccion->pelicula; ?></p>
+
+            <p class="card-text">
+            <?php  /*
+              $id_clasificacion = $pelicula -> clasificacion;
+               foreach ($clasificaciones as $clasificacion){
+                  if($clasificacion -> id_clasificacion == $id_clasificacion){
+                      echo $clasificacion -> clasificacion;
+                      }
+                   }*/
+              ?>
+            </p>
+            <p class="card-text"><?php echo $proyeccion-> pelicula; ?></p>
+
+            <a href="#" class="btn btn-primary align-self-end">Ver trailer</a>
+           
+        </div>
+        
+        <div class="card-block px-2 ml-auto ">   
+        </div>    
+        <div class="w-100"></div>
+        <div class="card-footer w-100 text-muted">
+            <h6 class="card-title"><?php echo 'Dia' ?></h6>
+            <h6 class="card-title"><?php echo  $date ?></h6>
+            <h6 class="card-title"><?php echo  $horario; ?></h6>
+        </div>
+    </div>
+    <br>
+
+    <?php
+        $aux=$proyeccion->pelicula; }else{
+         //$dias .= "" . $proyeccion-> horario;
+         //$horario .= "". $proyeccion-> dia;
+         $aux = $proyeccion ->pelicula;
+        }//fin de if 
+    }//end primer if
+    }?>
+</div>
+
 <script>
-    jQuery(document).ready(function($){
-       
+    jQuery(document).ready(function($){     
     });
 </script>

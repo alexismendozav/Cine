@@ -96,9 +96,9 @@
                 <br>
                 <label for="clasificacion">Clasificación:</label>
                 <select name="clasificacion" id="clasificacion">
-                    {% for clasificacion in clasificaciones %}
-                  <option value="{{clasificacion.id_clasificacion}}">{{clasificacion.clasificacion}}</option>
-                  {% endfor %}
+                    <?php foreach ($clasificaciones as $clasificacion) { ?>
+                  <option value="<?= $clasificacion->id_clasificacion ?>"><?= $clasificacion->clasificacion ?></option>
+                  <?php } ?>
                 </select>
                 <br>
                 <label for="categoria">Categoria:</label>

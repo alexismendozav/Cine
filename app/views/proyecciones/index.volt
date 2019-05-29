@@ -10,9 +10,8 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="admin">Peliculas
-                 
-                </a>
+            <a class="nav-link" href="admin">Peliculas    
+            </a>
           </li>
           <li class="nav-item">
             <a class="nav-link  active" href="proyecciones">Proyecciones</a>
@@ -22,12 +21,7 @@
                 <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="clasificaciones">Clasificaciones</a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="#">Salas</a>
-            </li>
+       
         </ul>
       </div>
     </div>

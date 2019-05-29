@@ -37,7 +37,7 @@
   <!-- Page Content -->
   <div class="container">
     <br>
-      <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#myModal">
+      <button type="button" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#modalAdd">
          Agregar Categoria
       </button>
        <hr>
@@ -48,38 +48,37 @@
          <tbody>
          </tbody>
        </table>
-
+      
+   
        <!-- Modal Inserction-->
-          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h4 class="modal-title" id="myModalLabel">New Album</h4>
-                </div>
-                <div class="modal-body">
-                  <label for="name">Name:</label>
+       <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nueva Categoria</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                  <label for="name">Nombre:</label>
                   <input class="form-control"  type="text" name="name" value="" id="nameInserction">
                   <br>
-                  <label for="author">Author:</label>
-                  <input  class="form-control"  type="text" name="author" value="" id="authorInserction">
-                  <br>
-                  <label for="genre">Genre:</label>
-                  <select class="form-control" id="optionGenre">
-                 
-                    <option  value="" ></option>
-                 
-                  </select>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary" id="btnSave" >Save changes</button>
-                </div>
+                  <label for="genre">Visible:</label>
+                  <select class="form-control" id="optionGenre">           
+                    <option class="form-control"  value="SI" >SI</option>
+                    <option  class="form-control" value="NO" >NO</option>
+                   </select>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-primary">Agregar categoria</button>
               </div>
             </div>
           </div>
+        </div>
         <!--End Modal Inserction -->
-        
+
         <!--DataTable -->
         <script type="text/javascript">
           jQuery(document).ready(function($){
@@ -101,7 +100,7 @@
                       sorteable:false,
                       "render":function(data,type,full,meta)
                       {
-                        return '<div><button class="btn btn-warning"  onclick="editG(\''+full.id_categoria+'\',\''+full.categoria+'\',\''+full.visible+'\')"   data-target="#modalUpdate" > <i class="fa fa-pencil"></i> </button> </div> <button class="btn btn-danger" onclick="deleteG(\''+full.id_categoria+'\',\''+full.visible+'\')"><i class="fa fa-trash"></i> </button> </div>';
+                        return '<div><button class="btn btn-warning"  onclick="editG(\''+full.id_categoria+'\',\''+full.categoria+'\',\''+full.visible+'\')" data-toggle="modal"   data-target="#modalEdit" > <i class="fa fa-pencil"></i> </button> </div> <button class="btn btn-danger" onclick="deleteG(\''+full.id_categoria+'\',\''+full.visible+'\')"><i class="fa fa-trash"></i> </button> </div>';
                       }
                     }
                     ],  "language": {
@@ -115,5 +114,8 @@
               });
           });
         </script>
+       <script type="text/javascript">
+          function editG(id,categoria,visible){};
+      </script>
 
   </div>

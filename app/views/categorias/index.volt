@@ -41,7 +41,7 @@
          Agregar Categoria
       </button>
        <hr>
-       <table class="display" id="tablaCategorias">
+       <table class="table" id="tablaCategorias">
          <thead>
            <th>Id</th><th>Categoria</th><th>Visible</th><th>Options</th>
          </thead>

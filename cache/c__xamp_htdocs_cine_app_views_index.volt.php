@@ -7,7 +7,6 @@
           <!--ICONS-->
           <!--END ICONS-->
   
-
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
         <!-- Latest compiled and minified JavaScript -->
@@ -15,19 +14,21 @@
         <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
         <link rel="stylesheet" href="css/style.css">
-       
-        <?= $this->tag->javascriptInclude('js/datatables.min.js') ?>
+        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.18/datatables.min.css"/>
+ 
+        <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.18/datatables.min.js"></script>
+        <!-- <?= $this->tag->javascriptInclude('js/datatables.min.js') ?>
         <?= $this->tag->javascriptInclude('js/dataTables.bootstrap.min.js') ?>
-        
+        -->
       
 
         <title>Cine</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <!--JS BOOSTRAP-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <!--END JS BOOSTRAP-->
+        <!--END JS BOOSTRAP
         <?= $this->tag->stylesheetLink('css/dataTables.bootstrap.min.css') ?>
-        <?= $this->tag->stylesheetLink('css/font-awesome.css') ?>
+        <?= $this->tag->stylesheetLink('css/font-awesome.css') ?>-->
 
     </head>
     <body >

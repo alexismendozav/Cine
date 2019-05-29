@@ -41,9 +41,9 @@
          Agregar Categoria
       </button>
        <hr>
-       <table class="table" id="tablaCategorias">
+       <table class="display" id="tablaCategorias">
          <thead>
-           <th>Id</th><th>Categoria</th><th>Visible</th>
+           <th>Id</th><th>Categoria</th><th>Visible</th><th>Options</th>
          </thead>
          <tbody>
          </tbody>
@@ -85,7 +85,33 @@
           jQuery(document).ready(function($){
               var tableCategorias;
               tableCategorias=$('#tablaCategorias').DataTable({
-                
+                procesing:false,
+                serverSide:false,
+                  ajax: 
+                  {
+                    "url":"<?php echo $this->url->get('categorias/datatable')?>",
+                    "type":"POST", 
+                  },
+                  columns:
+                  [
+                    {data: "id_categoria"},
+                    {data: "categoria"},
+                    {data: "visible"},
+                    {
+                      sorteable:false,
+                      "render":function(data,type,full,meta)
+                      {
+                        return '<div><button class="btn btn-warning"  onclick="editG(\''+full.id_categoria+'\',\''+full.categoria+'\',\''+full.visible+'\')"   data-target="#modalUpdate" > <i class="fa fa-pencil"></i> </button> </div> <button class="btn btn-danger" onclick="deleteG(\''+full.id_categoria+'\',\''+full.visible+'\')"><i class="fa fa-trash"></i> </button> </div>';
+                      }
+                    }
+                    ],  "language": {
+                        "lengthMenu": "Mostrar _MENU_ resultados por pagina",
+                        "zeroRecords": "Ninguna coincidencia - Intente nuevamente",
+                        "info": "Mostrando pagina _PAGE_ de _PAGES_",
+                        "infoEmpty": "Sin información disponible",
+                        "search":"Buscar:",
+                        "infoFiltered": "(filtrado del total de _MAX_ registros)"
+                 }
               });
           });
         </script>

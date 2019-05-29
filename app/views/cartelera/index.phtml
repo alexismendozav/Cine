@@ -17,57 +17,26 @@
             <a class="navbar-brand hidden-md-down text-light " href="#">
                 <img src="img/logo.png" alt="" width="30px" ></a>
             <ul class="navbar-nav ml-auto">
-                <form class="form-inline my-2 my-lg-0">
-                <input class="form-control" id="date" type="date" value="<?php echo date('Y-m-d');?>" min="<?php echo date('Y-m-d');?>" max="<?php echo date(('Y-m-d'),strtotime(date('Y-m-d').'+ 15 days'));?>">
-                <a class="btn btn-success my-2 my-sm-0" href="cartelera" role="button">Buscar</a>
-                <form>
+              <h5 class="text-primary"> ...........................................</h5>
             </ul>
           </div>
     </div>
 </nav> <!--END NAVIGATION-->
 <br>
-<!--Movies
+  
 <div class="container-c">
-    <?php   // foreach ($peliculas as $pelicula) {?>
-    <div class="card flex-row flex-wrap">
-        <div class="card-header border-0">
-            <img src="<?php// echo $pelicula->imagen; ?>"  style="width: 130px;height=360px;" alt="">
-        </div>
-        <div class="card-block px-2">
-            <h4 class="card-title"><?php //echo $pelicula->nombre_pelicula; ?></h4>
-            <p class="card-text"><?php// echo $pelicula->duracion; ?></p>
-
-            <p class="card-text">
-            <?php 
-            /*  $id_clasificacion = $pelicula -> clasificacion;
-               foreach ($clasificaciones as $clasificacion){
-                  if($clasificacion -> id_clasificacion == $id_clasificacion){
-                      echo $clasificacion -> clasificacion; }
-                   }*/
-              ?>
-            </p>
-
-            <p class="card-text"><?php //echo $pelicula->idioma; ?></p>
-
-            <a href="#" class="btn btn-primary align-self-end">Ver trailer</a>
-        </div>
-
-        Inicio de las funciones
-        <div class="card-block px-2 ml-auto ">
-            <h4 class="card-title"><?php// echo 'Horario' ?></h4>
-        </div>
-         Inicio de las funciones
-        
-        <div class="w-100"></div>
-        <div class="card-footer w-100 text-muted">
-            Footer stating cats are CUTE little animals
-        </div>
-    </div>
-    <br>
-    <?php //} ?>
-</div>
-End Movies-->
-<div class="container-c">
+<div class="form-group">
+    <label for="exampleFormControlSelect1">Buscar por dia:</label>
+    <select class="form-control" onchange="getval(this);" id="dateselect">
+      <option value="">Seleccione día</option>
+      <option value="2019-05-29">Hoy(29 mayo)</option>
+      <option value="2019-05-30">Mañana(30 mayo)</option>
+      <option value="2019-05-31">31 mayo</option>
+      <option value="2019-06-01">1 junio</option>
+      <option value="2019-06-02">2 junio</option>
+      <option value="2019-06-03">3 junio</option>
+    </select>
+  </div>
     <?php $fecha=""; $aux=0;  foreach ($proyecciones as $proyeccion) {
      $fecha = "".$proyeccion ->dia  ;
      if($date==$fecha){
@@ -76,23 +45,52 @@ End Movies-->
     
     <div class="card flex-row flex-wrap">
         <div class="card-header border-0">
-            <img src="<?php echo $proyeccion->pelicula; ?>"  style="width: 130px;height=360px;" alt="">
+            <img 
+            src="<?php       
+            foreach ($peliculas as $pelicula) {
+               if($pelicula -> id_pelicula ==  $proyeccion->pelicula ){
+                   echo $pelicula -> imagen;
+               }
+            }
+            ?>"  
+            style="width: 130px;height=360px;" alt="">
         </div>
         <div class="card-block px-2">
-            <h4 class="card-title"><?php echo $proyeccion->pelicula; ?></h4>
-            <p class="card-text"><?php echo $proyeccion->pelicula; ?></p>
+            <h4 class="card-title"><?php  foreach ($peliculas as $pelicula) {
+               if($pelicula -> id_pelicula ==  $proyeccion->pelicula ){
+                   echo $pelicula -> nombre_pelicula;
+               }
+            } ?></h4>
+            <p class="card-text"><?php foreach ($peliculas as $pelicula) {
+               if($pelicula -> id_pelicula ==  $proyeccion->pelicula ){
+                   echo $pelicula -> duracion;
+               }
+            } ?></p>
 
             <p class="card-text">
-            <?php  /*
-              $id_clasificacion = $pelicula -> clasificacion;
-               foreach ($clasificaciones as $clasificacion){
-                  if($clasificacion -> id_clasificacion == $id_clasificacion){
-                      echo $clasificacion -> clasificacion;
-                      }
-                   }*/
+            <?php  foreach ($peliculas as $pelicula) {
+               if($pelicula -> id_pelicula ==  $proyeccion->pelicula ){
+                $id_clasificacion = $pelicula -> clasificacion;
+                foreach ($clasificaciones as $clasificacion){
+                   if($clasificacion -> id_clasificacion == $id_clasificacion){
+                       echo $clasificacion -> clasificacion;
+                       }
+                    }
+               }
+            }
               ?>
             </p>
-            <p class="card-text"><?php echo $proyeccion-> pelicula; ?></p>
+            <p class="card-text"><?php 
+            foreach ($peliculas as $pelicula) {
+               if($pelicula -> id_pelicula ==  $proyeccion->pelicula ){
+                $id_categoria = $pelicula -> categoria;
+                foreach ($categorias as $categoria){
+                   if($categoria -> id_categoria == $id_categoria){
+                       echo $categoria-> categoria;
+                       }
+                    }
+               }
+            } ?></p>
 
             <a href="#" class="btn btn-primary align-self-end">Ver trailer</a>
            
@@ -111,15 +109,19 @@ End Movies-->
 
     <?php
         $aux=$proyeccion->pelicula; }else{
-         //$dias .= "" . $proyeccion-> horario;
-         //$horario .= "". $proyeccion-> dia;
          $aux = $proyeccion ->pelicula;
         }//fin de if 
     }//end primer if
     }?>
-</div>
 
 <script>
-    jQuery(document).ready(function($){     
+    jQuery(document).ready(function($){   
+      
     });
+    function getval(date){
+        window.location = "cartelera?date="+date.value;
+    }
 </script>
+</div>
+
+

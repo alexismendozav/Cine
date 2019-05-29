@@ -14,6 +14,9 @@ class CarteleraController extends \Phalcon\Mvc\Controller
         $proyecciones= Proyecciones::find();
         $this->view->proyecciones = $proyecciones;
 
+        $categorias= Categorias::find();
+        $this->view->categorias = $categorias;
+
         
         
     }

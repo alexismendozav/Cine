@@ -37,7 +37,7 @@
       <option value="2019-06-03">3 junio</option>
     </select>
   </div>
-    <?php $fecha=""; $aux=0;  foreach ($proyecciones as $proyeccion) {
+    <?php $fecha=""; $aux2 =0; $aux=0;  foreach ($proyecciones as $proyeccion) {
      $fecha = "".$proyeccion ->dia  ;
      if($date==$fecha){
      if($aux != $proyeccion->pelicula){    
@@ -100,15 +100,17 @@
         </div>    
         <div class="w-100"></div>
         <div class="card-footer w-100 text-muted">
+            <h6 class="card-title"><?php echo 'Horario' ?></h6>
+            <h6 class="card-title"><?php echo '12:00, 15:00' ?></h6>
             <h6 class="card-title"><?php echo 'Dia' ?></h6>
             <h6 class="card-title"><?php echo  $date ?></h6>
-            <h6 class="card-title"><?php echo  $horario; ?></h6>
         </div>
     </div>
     <br>
 
     <?php
         $aux=$proyeccion->pelicula; }else{
+         $aux2 = $aux;
          $aux = $proyeccion ->pelicula;
         }//fin de if 
     }//end primer if

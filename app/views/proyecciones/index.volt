@@ -40,18 +40,17 @@
       <button type="button" id="btnModalAd" class="btn btn-dark btn-lg" data-toggle="modal" data-target="#modalAdd">
          Agregar Función
       </button>
-       <hr>
-       <table class="table" id="tablaFunciones">
+      <hr>
+      <table class="table" id="tablaFunciones">
          <thead>
            <th>Id</th><th>Pelicula</th><th>Sala</th><th>Días</th><th>Horario</th><th>Options</th>
          </thead>
          <tbody>
          </tbody>
-       </table>
-      
-   
+      </table>
+    
        <!-- Modal Inserction-->
-       <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -87,12 +86,11 @@
               </div>
             </div>
           </div>
-       </div>
+      </div>
         <!--End Modal Inserction -->
 
-
       <!-- Modal Edit-->
-       <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="modalEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -129,11 +127,11 @@
               </div>
             </div>
           </div>
-       </div>
+      </div>
        <!--End Modal Edit -->
 
       <!-- Modal Delete-->
-       <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -155,13 +153,18 @@
               </div>
             </div>
           </div>
-       </div>
+      </div>
       <!--End Modal Delete -->
 
         <!--DataTable -->
-        <script type="text/javascript">
+      <script type="text/javascript">
           jQuery(document).ready(function($){
-              var tableFunciones;
+              var salas=[];
+              $.ajax({
+                "url": "<?php echo $this->url->get('salas/datatable') ?>",
+                "type": "POST",
+                dataType: "json",
+              });
               tableFunciones=$('#tablaFunciones').DataTable({
                 procesing:false,
                 serverSide:false,
@@ -225,8 +228,8 @@
           });
 
 
-        </script>
-       <script type="text/javascript">
+      </script>
+      <script type="text/javascript">
 
           function editProyecciones(id,pelicula,sala,dia,horario){
            $('#idEditar').val(id);

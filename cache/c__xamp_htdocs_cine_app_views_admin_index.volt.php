@@ -232,17 +232,27 @@
       <!--DataTable -->
       <script type="text/javascript">
         jQuery(document).ready(function($){
-            var categorias = [];
-            $.ajax({
-              url:"<?php echo $this->url->get('categorias/datatable') ?>",
-              type:"POST",
-              dataType: "json",
-              success : function (data) {
-                $.each(data, function(i,item){		             
-                   
-		              })            
+          var categorias=[];
+          var clasificaciones=[];
+          var nameCategorias = [];
+          var nameClasificaciones =[];
+          $.ajax({
+            "url": "<?php echo $this->url->get('categorias/datatable') ?>",
+            "type": "POST",
+            dataType: "json",
+              success: function(data){
+                var response = Object.values(data);
+                for(var i=0; i<response[0].length;i++){
+                  categorias.push(Object.values(response[0][i]));            
                 }
+                for(var i=0; i<categorias.length;i++){
+                  var id = categorias[i][0];
+                  var name = categorias[i][1];
+                  nameCategorias[categorias[i][0]] = categorias[i][1];
+                }             
+              }
             });
+        
             var tablePeliculas;
             tablePeliculas=$('#tablaPeliculas').DataTable({
               procesing:false,
@@ -258,7 +268,12 @@
                   {data: "nombre_pelicula"},           
                   {data: "duracion"},
                   {data: "clasificacion"},
-                  {data: "categoria"},
+                  {data: "categoria",
+                  "render": function(data,type,row){
+                      var name= nameCategorias[data];
+                      return name;
+                  }
+                  },
                   {data: "prioridad"},
                   {data: "fecha"},
                   {

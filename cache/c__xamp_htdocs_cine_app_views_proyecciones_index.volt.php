@@ -153,11 +153,25 @@
         <!--DataTable -->
       <script type="text/javascript">
           jQuery(document).ready(function($){
-              var salas=[];
+              var peliculas=[];
+              var namePeliculas = [];
               $.ajax({
-                "url": "<?php echo $this->url->get('salas/datatable') ?>",
+                "url": "<?php echo $this->url->get('peliculas/datatable') ?>",
                 "type": "POST",
                 dataType: "json",
+                success: function(data){
+                 var response = Object.values(data);
+                 for(var i=0; i<response[0].length; i++){
+                   peliculas.push(Object.values(response[0][i]));
+                  console.log(Object.values(response[0][i]));
+                 }
+                 for(var i=0;i<peliculas.length;i++){
+                   var id= peliculas[i][0];
+                   var name = peliculas [i][1];
+                   namePeliculas [peliculas[i][0]]=peliculas[i][1];
+                 }
+               
+                }
               });
               tableFunciones=$('#tablaFunciones').DataTable({
                 procesing:false,
@@ -170,7 +184,12 @@
                   columns:
                   [
                     {data: "id_proyeccion"},
-                    {data: "pelicula"},
+                    {data: "pelicula",
+                    "render":function(data,type,row){
+                      var name= namePeliculas[data];
+                      return name;
+                    }
+                    },
                     {data: "sala"},
                     {data: "dia"},
                     {data: "horario"},

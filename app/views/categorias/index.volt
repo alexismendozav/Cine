@@ -133,8 +133,8 @@
         <!--DataTable -->
         <script type="text/javascript">
           jQuery(document).ready(function($){
-              var tableCategorias;
-              tableCategorias=$('#tablaCategorias').DataTable({
+        
+              var tableCategorias=$('#tablaCategorias').DataTable({
                 procesing:false,
                 serverSide:false,
                   ajax: 
@@ -163,31 +163,36 @@
                         "infoFiltered": "(filtrado del total de _MAX_ registros)"
                  }
               });
-          });
+             
+              $( "#btnEditar" ).click(function() {
+                  var id = $('#id').val();
+                  var name = $('#nameEditar').val();
+                  var visible = $('#visibleEditar').val();
+                  editarCategoria(id,name,visible);
+                
+                  $("#modalEditar").modal('hide');  
+                  setTimeout(function(){tableCategorias.ajax.reload();},1000);  
+              });
 
-          $( "#btnAdd" ).click(function() {
-            var name = $('#nameAdd').val();
-            var visible = $('#visibleAdd').val();
-            addCategoria(name,visible);
-            setTimeout(function(){tableCategorias.ajax.reload();},1000); 
-            $("#modalAdd").modal('hide');     
-          });
+              
+              $( "#btnAdd" ).click(function() {
+                var name = $('#nameAdd').val();
+                var visible = $('#visibleAdd').val();
+                addCategoria(name,visible);
+              
+                $("#modalAdd").modal('hide');  
+                setTimeout(function(){tableCategorias.ajax.reload();},1000);    
+              });
 
-          $( "#btnEditar" ).click(function() {
-            var id = $('#id').val();
-            var name = $('#nameEditar').val();
-            var visible = $('#visibleEditar').val();
-            editarCategoria(id,name,visible);
-           
-            $("#modalEditar").modal('hide');  
-            tableCategorias.ajax.reload(null,false);    
-          });
+            
 
-          $( "#btnEliminar" ).click(function() {
-            var id = $('#idEliminar').val();         
-            eliminarCategoria(id);
-            setTimeout(function(){tableCategorias.ajax.reload();},1000);
-            $("#modalEliminar").modal('hide');      
+              $( "#btnEliminar" ).click(function() {
+                var id = $('#idEliminar').val();         
+                eliminarCategoria(id);
+                setTimeout(function(){tableCategorias.ajax.reload();},1000);
+                $("#modalEliminar").modal('hide');      
+              });
+
           });
 
 
@@ -197,6 +202,7 @@
           function editCategoria(id,categoria,visible){
             $('#id').val(id);
             $('#nameEditar').val(categoria);
+            $('#visibleEditar').val(visible);
             $("#modalEditar").modal('show');  
           }
           function deleteCategoria(id,categoria){

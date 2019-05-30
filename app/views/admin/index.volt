@@ -291,10 +291,9 @@
                       "search":"Buscar:",
                       "infoFiltered": "(filtrado del total de _MAX_ registros)"
                }
-            });         
-        });
+            });  
 
-        $("#btnAdd").click(function() {
+            $("#btnAdd").click(function() {
             var nombre = $('#nameInserction').val();
             var imagen = $('#imagenInserction').val();
             var triler = $('#trilerInserction').val();           
@@ -312,30 +311,33 @@
             $("#modalAdd").modal('hide');     
           });
 
-        $("#btnEdit").click(function() {
-            var id = $('#idEdit').val();
-            var nombre = $('#nameEdit').val();
-            var imagen = $('#imagenEdit').val();
-            var triler = $('#trilerEdit').val();           
-            var duracion = $('#duracionEdit').val();
-            var clasificacion = $('#clasificacionEdit').val();
-            var categoria = $('#categoriaEdit').val();
-            var idioma = $('#idiomaEdit').val();
-            var prioridad = $('#prioridadEdit').val();
-            var calificacion = $('#calificacionEdit').val();
-            var fecha = $('#fechaEdit').val();
-            var descripcion = $('#descripcionEdit').val();
-        
-            editarPelicula(id,nombre,imagen,triler,duracion,clasificacion,categoria,idioma,prioridad,calificacion,fecha,descripcion);
-            setTimeout(function(){tablePeliculas.ajax.reload(null,false);},500);
-            $("#modalEditar").modal('hide');     
-          });
+          $("#btnEdit").click(function() {
+              var id = $('#idEdit').val();
+              var nombre = $('#nameEdit').val();
+              var imagen = $('#imagenEdit').val();
+              var triler = $('#trilerEdit').val();           
+              var duracion = $('#duracionEdit').val();
+              var clasificacion = $('#clasificacionEdit').val();
+              var categoria = $('#categoriaEdit').val();
+              var idioma = $('#idiomaEdit').val();
+              var prioridad = $('#prioridadEdit').val();
+              var calificacion = $('#calificacionEdit').val();
+              var fecha = $('#fechaEdit').val();
+              var descripcion = $('#descripcionEdit').val();
+          
+              editarPelicula(id,nombre,imagen,triler,duracion,clasificacion,categoria,idioma,prioridad,calificacion,fecha,descripcion);
+              setTimeout(function(){tablePeliculas.ajax.reload(null,false);},500);
+              $("#modalEditar").modal('hide');     
+            });
 
-          $( "#btnEliminar" ).click(function() {
-            var id = $('#idEliminar').val();         
-            eliminarPelicula(id);
-            $("#modalEliminar").modal('hide');      
-          });
+            $( "#btnEliminar" ).click(function() {
+              var id = $('#idEliminar').val();         
+              eliminarPelicula(id);
+              $("#modalEliminar").modal('hide');      
+            });       
+        });
+
+       
       </script>
      <script type="text/javascript">
      
@@ -368,7 +370,7 @@
               url:"<?php echo $this->url->get('admin/addAjax')?>",
               data:{nombre:nombre,imagen:imagen,triler:triler,duracion:duracion,clasificacion:clasificacion,
               categoria:categoria,idioma:idioma,prioridad:prioridad,calificacion:calificacion,
-              fecha:fecha,descripcion:descripcion
+              fecha:fecha,descripcion:descripcion,
               }
             }).done(function(data){
               Swal.fire('Pelicula Agregada');

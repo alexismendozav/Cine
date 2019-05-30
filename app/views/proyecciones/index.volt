@@ -209,37 +209,39 @@
                         "infoFiltered": "(filtrado del total de _MAX_ registros)"
                  }
               });
+
+              $( "#btnAdd" ).click(function() {
+                var pelicula = $('#pelicula').val();
+                var sala = $('#sala').val();
+                var dia = $('#dia').val();
+                var hora = $('#hora').val();
+                addProyeccion(pelicula,sala,dia,hora);
+                setTimeout(function(){tableFunciones.ajax.reload();},1000); 
+                $("#modalAdd").modal('hide');     
+             });
+
+              $( "#btnEditar" ).click(function() {
+                var id = $('#idEditar').val();
+                var pelicula = $('#peliculaEditar').val();
+                var sala = $('#salaEditar').val();
+                var dia = $('#diaEditar').val();
+                var hora = $('#horaEditar').val();
+                editarProyeccion(id,pelicula,sala,dia,hora);
+              
+                $("#modalEditar").modal('hide');  
+                
+              });
+
+              $( "#btnEliminar" ).click(function() {
+                var id = $('#idEliminar').val();         
+                deleteProyeccion(id);
+                setTimeout(function(){tableCategorias.ajax.reload();},1000);
+                $("#modalEliminar").modal('hide');      
+              });
+
           });
 
-          $( "#btnAdd" ).click(function() {
-            var pelicula = $('#pelicula').val();
-            var sala = $('#sala').val();
-            var dia = $('#dia').val();
-            var hora = $('#hora').val();
-            addProyeccion(pelicula,sala,dia,hora);
-            setTimeout(function(){tableFunciones.ajax.reload();},1000); 
-            $("#modalAdd").modal('hide');     
-          });
-
-          $( "#btnEditar" ).click(function() {
-            var id = $('#idEditar').val();
-            var pelicula = $('#peliculaEditar').val();
-            var sala = $('#salaEditar').val();
-            var dia = $('#diaEditar').val();
-            var hora = $('#horaEditar').val();
-            editarProyeccion(id,pelicula,sala,dia,hora);
-           
-            $("#modalEditar").modal('hide');  
-            
-          });
-
-          $( "#btnEliminar" ).click(function() {
-            var id = $('#idEliminar').val();         
-            deleteProyeccion(id);
-            setTimeout(function(){tableCategorias.ajax.reload();},1000);
-            $("#modalEliminar").modal('hide');      
-          });
-
+         
 
       </script>
       <script type="text/javascript">

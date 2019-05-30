@@ -234,9 +234,14 @@
         jQuery(document).ready(function($){
             var categorias = [];
             $.ajax({
-              "url":"<?php echo $this->url->get('categorias/datatable') ?>",
-              "type":"POST",
-              dataType: "json"
+              url:"<?php echo $this->url->get('categorias/datatable') ?>",
+              type:"POST",
+              dataType: "json",
+              success : function (data) {
+                $.each(data, function(i,item){		             
+                   
+		              })            
+                }
             });
             var tablePeliculas;
             tablePeliculas=$('#tablaPeliculas').DataTable({
@@ -307,7 +312,7 @@
             var descripcion = $('#descripcionEdit').val();
         
             editarPelicula(id,nombre,imagen,triler,duracion,clasificacion,categoria,idioma,prioridad,calificacion,fecha,descripcion);
-           
+            setTimeout(function(){tablePeliculas.ajax.reload(null,false);},500);
             $("#modalEditar").modal('hide');     
           });
 

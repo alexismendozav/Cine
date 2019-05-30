@@ -27,16 +27,13 @@
 <div class="container-c">
 <div class="form-group">
     <label for="exampleFormControlSelect1">Buscar por dia:</label>
-    <select class="form-control" onchange="getval(this);" id="dateselect">
-      <option value="">Seleccione día</option>
-      <option value="2019-05-29">Hoy(29 mayo)</option>
-      <option value="2019-05-30">Mañana(30 mayo)</option>
-      <option value="2019-05-31">31 mayo</option>
-      <option value="2019-06-01">1 junio</option>
-      <option value="2019-06-02">2 junio</option>
-      <option value="2019-06-03">3 junio</option>
-    </select>
+    <!-- Search form -->
+    <form class="form-inline my-2 my-lg-0" methos="get">
+      <input class="form-control mr-sm-2" type="search" placeholder="yyyy/mm/dd" aria-label="Search" name="date" value="<?php echo $date ?>" > 
+      <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Buscar</button>
+    </form>
   </div>
+    <h3><label  class="text-primary control-label" for="exampleFormControlSelect1"><?php saber_dia($date);?></label></h3>
     <?php $fecha=""; $aux2 =0; $aux=0;  foreach ($proyecciones as $proyeccion) {
      $fecha = "".$proyeccion ->dia  ;
      if($date==$fecha){
@@ -100,10 +97,19 @@
         </div>    
         <div class="w-100"></div>
         <div class="card-footer w-100 text-muted">
-            <h6 class="card-title"><?php echo 'Horario' ?></h6>
-            <h6 class="card-title"><?php echo '12:00, 15:00' ?></h6>
-            <h6 class="card-title"><?php echo 'Dia' ?></h6>
-            <h6 class="card-title"><?php echo  $date ?></h6>
+            <h6 class="card-title"><?php echo 'Horarios' ?></h6>
+            <h6 class="card-title text-dark"><?php 
+            $hora = "";
+            $sala = "";
+                foreach ($pro as $proyecc) {
+                    if($proyecc -> pelicula ==  $proyeccion->pelicula){
+                        if($proyecc -> dia == $date){
+                            $hora .= "  S".$proyecc -> sala . " a las ".$proyecc -> horario . " | ";
+                        }
+                    }
+                }
+             echo $hora;
+            ?></h6>
         </div>
     </div>
     <br>
@@ -114,7 +120,16 @@
          $aux = $proyeccion ->pelicula;
         }//fin de if 
     }//end primer if
-    }?>
+    }
+
+
+     function saber_dia($fecha){
+        setlocale(LC_TIME,  'es_ES_CO.UTF-8');		
+        $newDate = date("d-m-Y", strtotime($fecha));				
+        $mesDesc = strftime("%A, %e de %B", strtotime($newDate));
+        echo "Funciones del dia ". $mesDesc .".";
+    }
+    ?>
 
 <script>
     jQuery(document).ready(function($){   

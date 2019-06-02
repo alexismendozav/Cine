@@ -370,7 +370,7 @@
               url:"<?php echo $this->url->get('admin/addAjax')?>",
               data:{nombre:nombre,imagen:imagen,triler:triler,duracion:duracion,clasificacion:clasificacion,
               categoria:categoria,idioma:idioma,prioridad:prioridad,calificacion:calificacion,
-              fecha:fecha,descripcion:descripcion
+              fecha:fecha,descripcion:descripcion,
               }
             }).done(function(data){
               Swal.fire('Pelicula Agregada');
